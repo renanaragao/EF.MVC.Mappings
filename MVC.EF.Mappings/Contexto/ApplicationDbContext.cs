@@ -8,7 +8,7 @@ namespace MVC.EF.Mappings.Contexto
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext()
-            : base("DefaultConnection")
+            : base("mvcMappings")
         {
             Configuration.LazyLoadingEnabled = false; 
         }

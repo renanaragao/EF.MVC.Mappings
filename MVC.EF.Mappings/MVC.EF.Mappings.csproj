@@ -119,6 +119,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Contexto\ApplicationDbContext.cs" />
+    <Compile Include="Migrations\201509171605411_TabelaPessoaFisica.cs" />
+    <Compile Include="Migrations\201509171605411_TabelaPessoaFisica.Designer.cs">
+      <DependentUpon>201509171605411_TabelaPessoaFisica.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\EntityConfig\EnderecoConfig.cs" />
@@ -144,6 +148,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201509171605411_TabelaPessoaFisica.resx">
+      <DependentUpon>201509171605411_TabelaPessoaFisica.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

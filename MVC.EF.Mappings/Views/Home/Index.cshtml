@@ -48,10 +48,10 @@
                         </tr>
                     </table>
                     <h1>Pessoa Física</h1>
-                    @Html.Partial("_PessoaFisica", pessoa.PessoaFisica)
+                    @Html.Partial("_PessoaFisica", pessoa)
 
                     <h1>Endereco Pessoa Física</h1>
-                    @Html.Partial("_Endereco", pessoa.PessoaFisica.EnderecoList)
+                    @Html.Partial("_Endereco", pessoa.EnderecoList)
 
                     <h1>Pessoas Jurídicas</h1>
                     @Html.Partial("_PessoaJuridica", pessoa.PessoaJuridicaList)

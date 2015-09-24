@@ -9,13 +9,15 @@ namespace MVC.EF.Mappings.Models
         {
             PessoaId = Guid.NewGuid();
             PessoaJuridicaList = new List<PessoaJuridica>();
+            EnderecoList = new List<Endereco>();
+
         }
 
         public Guid PessoaId { get; set; }
         public DateTime DataCadastro { get; set; }
         public bool Ativo { get; set; }
         public bool NegarCredito { get; set; }
-        public virtual PessoaFisica PessoaFisica { get; set; }
         public virtual ICollection<PessoaJuridica> PessoaJuridicaList { get; set; }
+        public virtual ICollection<Endereco> EnderecoList { get; set; }
     }
 }

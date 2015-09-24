@@ -17,6 +17,16 @@ namespace MVC.EF.Mappings.Models.EntityConfig
             Property(p => p.NegarCredito)
                 .IsRequired();
 
+            // MAPEAMENTO DE MUITOS PARA MUITOS
+            HasMany(f => f.EnderecoList)
+                .WithMany()
+                .Map(me =>
+                {
+                    me.MapLeftKey("PessoaId");
+                    me.MapRightKey("EnderecoId");
+                    me.ToTable("PessoaEndereco");
+                });
+
         }
     }
 }

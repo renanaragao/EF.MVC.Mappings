@@ -15,11 +15,13 @@ namespace MVC.EF.Mappings.Controllers
             var rnd = new Random();
 
             // Pessoa
-            var pessoa = new Pessoa()
+            var pessoa = new PessoaFisica()
             {
                 DataCadastro = DateTime.Now,
                 Ativo = true,
-                NegarCredito = false
+                NegarCredito = false,
+                Nome = "Nome " + rnd.Next(1, 13),
+                Cpf = "321456987" + rnd.Next(1, 13),
             };
 
             // Endereco PF de Pessoa
@@ -32,14 +34,6 @@ namespace MVC.EF.Mappings.Controllers
                 Cidade = "São Paulo",
                 Numero = rnd.Next(1, 13).ToString(),
                 Complemento = "Fundos"
-            };
-
-            // PF de Pessoa
-            var pessoaFisica = new PessoaFisica()
-            {
-                Nome = "Nome " + rnd.Next(1, 13),
-                Cpf = "321456987" + rnd.Next(1, 13),
-                Pessoa = pessoa
             };
 
             // Endereco PJ 1 de Pessoa
@@ -88,10 +82,7 @@ namespace MVC.EF.Mappings.Controllers
             //#### INICIO SETUP de PF, PJ e Endereços ####
 
             // Adicionando EnderecoPF em PF
-            pessoaFisica.EnderecoList.Add(enderecoPF);
-
-            // Adicionando PF em Pessoa
-            pessoa.PessoaFisica = pessoaFisica;
+            pessoa.EnderecoList.Add(enderecoPF);
 
             // Adicionando EnderecoPJ1 em PJ1
             pessoaJuridica1.EnderecoList.Add(enderecoPJ1);
@@ -134,11 +125,10 @@ namespace MVC.EF.Mappings.Controllers
 
             //var todosOsDados = contexto.Pessoa.ToList();
 
-            var todosOsDados = contexto.Pessoa
-                .Include(p => p.PessoaFisica)
+            var todosOsDados = contexto.PessoaFisica
                 .Include(p => p.PessoaJuridicaList)
                 .Include(p => p.PessoaJuridicaList.Select(c => c.EnderecoList))
-                .Include(p => p.PessoaFisica.EnderecoList).ToList();
+                .Include(p => p.EnderecoList).ToList();
 
             return View(todosOsDados);
         }

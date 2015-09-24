@@ -6,7 +6,6 @@ namespace MVC.EF.Mappings.Models.EntityConfig
     {
         public PessoaFisicaConfig()
         {
-            HasKey(p => p.PessoaFisicaId);
 
             Property(c => c.Cpf)
                 .HasMaxLength(11);
@@ -14,19 +13,13 @@ namespace MVC.EF.Mappings.Models.EntityConfig
             Property(c => c.Nome)
                 .HasMaxLength(100);
 
-            // MAPEAMENTO DE UM PARA UM
-            HasRequired(p => p.Pessoa)
-                .WithRequiredPrincipal(p => p.PessoaFisica);
+            Map(x =>
+            {
 
-            // MAPEAMENTO DE MUITOS PARA MUITOS
-            HasMany(f => f.EnderecoList)
-                .WithMany()
-                .Map(me =>
-                {
-                    me.MapLeftKey("PessoaFisicaId");
-                    me.MapRightKey("EnderecoId");
-                    me.ToTable("PessoaFisicaEndereco");
-                });
+                x.ToTable("PessoaFisica");
+
+            });
+
         }
     }
 }
